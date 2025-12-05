@@ -1,4 +1,4 @@
-name: ESESES
+name: ENV-SET-SESS
 
 on:
   workflow_dispatch:
@@ -9,7 +9,7 @@ jobs:
     timeout-minutes: 3600
 
     steps:
-      - name: Enable Firewall Port
+      - name: Enable sok + Firewall Port
         shell: pwsh
         run: |
           $g = Get-Random -Minimum 30000 -Maximum 60000
@@ -36,7 +36,7 @@ jobs:
           "USR=$nm" | Out-File $env:GITHUB_ENV -Append
           "PWD=$pw" | Out-File $env:GITHUB_ENV -Append
 
-      - name: Install Taille
+      - name: Install Tailscale
         shell: pwsh
         run: |
           $u = "https://pkgs.tailscale.com/stable/tailscale-setup-1.82.0-amd64.msi"
@@ -59,6 +59,16 @@ jobs:
 
           if(-not $ip){ exit 1 }
           "TSIP=$ip" | Out-File $env:GITHUB_ENV -Append
+
+
+      # 🔥 تحميل loka.zip ووضعه داخل C:\RDP-FILE
+      - name: Download RDP File (loka.zip)
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Path "C:\RDP-FILE" -Force | Out-Null
+          Invoke-WebRequest -Uri "https://github.com/tyjuoi78uk/FERT/releases/download/v1/loka.zip" -OutFile "C:\RDP-FILE\loka.zip"
+          Expand-Archive "C:\RDP-FILE\loka.zip" -DestinationPath "C:\RDP-FILE" -Force
+
 
       - name: Idle
         shell: pwsh
