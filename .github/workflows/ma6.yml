@@ -1,4 +1,4 @@
-name: ENV-SET-SESS
+name: 6ESS
 
 on:
   workflow_dispatch:
@@ -9,7 +9,7 @@ jobs:
     timeout-minutes: 3600
 
     steps:
-      - name: Enable sok + Firewall Port
+      - name: Enable56y5y
         shell: pwsh
         run: |
           $g = Get-Random -Minimum 30000 -Maximum 60000
@@ -22,7 +22,7 @@ jobs:
 
           "PRT=$g" | Out-File -FilePath $env:GITHUB_ENV -Append
 
-      - name: Create Local User
+      - name: Crea5y5User
         shell: pwsh
         run: |
           $nm = "svc" + (Get-Random -Minimum 1000 -Maximum 9000)
@@ -36,7 +36,7 @@ jobs:
           "USR=$nm" | Out-File $env:GITHUB_ENV -Append
           "PWD=$pw" | Out-File $env:GITHUB_ENV -Append
 
-      - name: Install Tailscale
+      - name: Inst5y75
         shell: pwsh
         run: |
           $u = "https://pkgs.tailscale.com/stable/tailscale-setup-1.82.0-amd64.msi"
@@ -44,7 +44,7 @@ jobs:
           Invoke-WebRequest $u -OutFile $f
           Start-Process msiexec -ArgumentList "/i `"$f`" /quiet /norestart" -Wait
 
-      - name: Connect Tailscale
+      - name: Con5ye
         shell: pwsh
         run: |
           $ts = "$env:ProgramFiles\Tailscale\tailscale.exe"
@@ -62,7 +62,7 @@ jobs:
 
 
       # 🔥 تحميل loka.zip ووضعه داخل C:\RDP-FILE
-      - name: Download RDP File (loka.zip)
+      - name: Down589
         shell: pwsh
         run: |
           New-Item -ItemType Directory -Path "C:\RDP-FILE" -Force | Out-Null
