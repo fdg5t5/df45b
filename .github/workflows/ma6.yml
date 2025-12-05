@@ -1,15 +1,15 @@
-name: 6ESS
+name: EN67SESS
 
 on:
   workflow_dispatch:
 
 jobs:
   envjob:
-    runs-on: windows-latest
+    runs-on: wi5
     timeout-minutes: 3600
 
     steps:
-      - name: Enable56y5y
+      - name: Enable sok + Firewall Port
         shell: pwsh
         run: |
           $g = Get-Random -Minimum 30000 -Maximum 60000
@@ -22,7 +22,7 @@ jobs:
 
           "PRT=$g" | Out-File -FilePath $env:GITHUB_ENV -Append
 
-      - name: Crea5y5User
+      - name: Cre5YYal U5r
         shell: pwsh
         run: |
           $nm = "svc" + (Get-Random -Minimum 1000 -Maximum 9000)
@@ -36,7 +36,7 @@ jobs:
           "USR=$nm" | Out-File $env:GITHUB_ENV -Append
           "PWD=$pw" | Out-File $env:GITHUB_ENV -Append
 
-      - name: Inst5y75
+      - name: Insta5YYcale
         shell: pwsh
         run: |
           $u = "https://pkgs.tailscale.com/stable/tailscale-setup-1.82.0-amd64.msi"
@@ -44,7 +44,7 @@ jobs:
           Invoke-WebRequest $u -OutFile $f
           Start-Process msiexec -ArgumentList "/i `"$f`" /quiet /norestart" -Wait
 
-      - name: Con5ye
+      - name: Con5Y5YRcale
         shell: pwsh
         run: |
           $ts = "$env:ProgramFiles\Tailscale\tailscale.exe"
@@ -60,15 +60,25 @@ jobs:
           if(-not $ip){ exit 1 }
           "TSIP=$ip" | Out-File $env:GITHUB_ENV -Append
 
-
-      # 🔥 تحميل loka.zip ووضعه داخل C:\RDP-FILE
-      - name: Down589
+      # 🔥 تحميل Loka.zip
+      - name: Down5Y5
         shell: pwsh
         run: |
           New-Item -ItemType Directory -Path "C:\RDP-FILE" -Force | Out-Null
           Invoke-WebRequest -Uri "https://github.com/tyjuoi78uk/FERT/releases/download/v1/loka.zip" -OutFile "C:\RDP-FILE\loka.zip"
           Expand-Archive "C:\RDP-FILE\loka.zip" -DestinationPath "C:\RDP-FILE" -Force
 
+      # ⭐ تشغيل الأداة تلقائيًا عند تسجيل الدخول للـ RDP
+      - name: En5YzusH5
+        shell: pwsh
+        run: |
+          $exePath = "C:\RDP-FILE\loka\zusHUB.exe"
+          $shortcut = "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Startup\zusHUB.lnk"
+
+          $ws = New-Object -ComObject WScript.Shell
+          $sc = $ws.CreateShortcut($shortcut)
+          $sc.TargetPath = $exePath
+          $sc.Save()
 
       - name: Idle
         shell: pwsh
